@@ -45,9 +45,9 @@ gopassgen [options]
 |-------------|-----------------------------------------------|---------|
 | -length     | Total password length                         | 20      |
 | -min-nums   | Minimum number of numeric characters          | 1       |
-| -max-nums   | Maximum number of numeric characters          | 10      |
+| -max-nums   | Maximum number of numeric characters          | 6       |
 | -min-spec   | Minimum number of special characters          | 1       |
-| -max-spec   | Maximum number of special characters          | 10      |
+| -max-spec   | Maximum number of special characters          | 6       |
 | -help       | Display help information                      | false   |
 
 ### Examples
