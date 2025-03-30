@@ -1,0 +1,24 @@
+# Binaries
+/bin/
+/build/
+/dist/
+*.exe
+*.out
+*.app
+
+# Go Modules & Dependencies
+/go.sum
+/go.work
+/go.work.sum
+
+# Editor & OS Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+*.log
+
+# Test Cache
+/cache/
+/cover.out
