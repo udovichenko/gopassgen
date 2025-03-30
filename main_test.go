@@ -112,6 +112,26 @@ func TestMinFunction(t *testing.T) {
 	}
 }
 
+func TestDefaultValuesValidity(t *testing.T) {
+	// Test that min values don't exceed max values
+	if DefaultMinNumeric > DefaultMaxNumeric {
+		t.Errorf("Default min number of numeric characters (%d) exceeds max (%d)",
+			DefaultMinNumeric, DefaultMaxNumeric)
+	}
+
+	if DefaultMinSpecialChars > DefaultMaxSpecialChars {
+		t.Errorf("Default min number of special characters (%d) exceeds max (%d)",
+			DefaultMinSpecialChars, DefaultMaxSpecialChars)
+	}
+
+	// Test that sum of minimums doesn't exceed total length
+	if DefaultMinNumeric+DefaultMinSpecialChars > DefaultPasswordLength {
+		t.Errorf("Sum of minimum requirements (%d + %d = %d) exceeds total password length (%d)",
+			DefaultMinNumeric, DefaultMinSpecialChars,
+			DefaultMinNumeric+DefaultMinSpecialChars, DefaultPasswordLength)
+	}
+}
+
 // Helper functions for testing
 func containsMinChars(s, charSet string, minCount int) bool {
 	count := 0

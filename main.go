@@ -13,16 +13,25 @@ const (
 	lowercase = "abcdefghijklmnopqrstuvwxyz"
 	uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	numbers   = "0123456789"
-	specChars = "!@#$%^&*()-_=+[]{}|;:,.<>?/"
+	specChars = "!@#$%^&*()-_=+[]{}|;:,.<>?"
+)
+
+// Default configuration values for password generation.
+var (
+	DefaultPasswordLength  = 20
+	DefaultMinNumeric      = 1
+	DefaultMaxNumeric      = 6
+	DefaultMinSpecialChars = 1
+	DefaultMaxSpecialChars = 6
 )
 
 func main() {
 	// Define command line flags
-	length := flag.Int("length", 20, "Total password length")
-	minNums := flag.Int("min-nums", 1, "Minimum number of numeric characters")
-	maxNums := flag.Int("max-nums", 10, "Maximum number of numeric characters")
-	minSpec := flag.Int("min-spec", 1, "Minimum number of special characters")
-	maxSpec := flag.Int("max-spec", 10, "Maximum number of special characters")
+	length := flag.Int("length", DefaultPasswordLength, "Total password length")
+	minNums := flag.Int("min-nums", DefaultMinNumeric, "Minimum number of numeric characters")
+	maxNums := flag.Int("max-nums", DefaultMaxNumeric, "Maximum number of numeric characters")
+	minSpec := flag.Int("min-spec", DefaultMinSpecialChars, "Minimum number of special characters")
+	maxSpec := flag.Int("max-spec", DefaultMaxSpecialChars, "Maximum number of special characters")
 	help := flag.Bool("help", false, "Display help information")
 
 	// Parse command line arguments
@@ -148,11 +157,11 @@ func printHelp() {
 	fmt.Println("\nUsage:")
 	fmt.Println("  password-generator [options]")
 	fmt.Println("\nOptions:")
-	fmt.Println("  -length int     Total password length (default 12)")
-	fmt.Println("  -min-nums int   Minimum number of numeric characters (default 1)")
-	fmt.Println("  -max-nums int   Maximum number of numeric characters (default 3)")
-	fmt.Println("  -min-spec int   Minimum number of special characters (default 1)")
-	fmt.Println("  -max-spec int   Maximum number of special characters (default 3)")
+	fmt.Printf("  -length int     Total password length (default %d)\n", DefaultPasswordLength)
+	fmt.Printf("  -min-nums int   Minimum number of numeric characters (default %d)\n", DefaultMinNumeric)
+	fmt.Printf("  -max-nums int   Maximum number of numeric characters (default %d)\n", DefaultMaxNumeric)
+	fmt.Printf("  -min-spec int   Minimum number of special characters (default %d)\n", DefaultMinSpecialChars)
+	fmt.Printf("  -max-spec int   Maximum number of special characters (default %d)\n", DefaultMaxSpecialChars)
 	fmt.Println("  -help           Display this help information")
 	fmt.Println("\nExample:")
 	fmt.Println("  password-generator -length 16 -min-nums 2 -max-nums 4 -min-spec 2 -max-spec 3")
